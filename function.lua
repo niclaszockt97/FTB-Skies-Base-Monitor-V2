@@ -1,4 +1,4 @@
-p = peripheral.wrap("eliteEnergyCube_0") -- side of the computer peripheral is
+p = peripheral.wrap("meBridge_0") -- side of the computer peripheral is
 for k,v in pairs(p) do
     print(k, v) -- this will tell you all the methods available
     read() -- need to push enter to get the next one.

@@ -2,7 +2,7 @@ local modem = peripheral.wrap("down")
 local monitor = peripheral.wrap("left")
 local es = peripheral.wrap("ultimateSmeltingFactory_0")
 local ef = peripheral.wrap("eliteEnrichingFactory_0")
-local mec = peripheral.wrap("ae2:controller_0")
+local mec = peripheral.wrap("meBridge_0")
 local ec = peripheral.wrap("eliteEnergyCube_0")
 local ei = peripheral.wrap("thermal:charge_bench_0")
 
@@ -60,6 +60,19 @@ monitor.write("Verbrauch:")
 monitor.setCursorPos(30,9)
 monitor.write("Füllstand:")
 
+--ME System
+
+monitor.setCursorPos(30,11)
+monitor.setTextColour(20)
+monitor.write("ME System")
+monitor.setTextColour(1)
+monitor.setCursorPos(30,12)
+monitor.write("Verbrauch: ")
+monitor.setCursorPos(30,13)
+monitor.write("Avg: ")
+monitor.setCursorPos(30,14)
+monitor.write("Energie")
+
 while true do
 
 
@@ -68,8 +81,10 @@ while true do
 
 	--ME Controller
 
-	mec.getEnergy()
-
+	meus = mec.getEnergyUsage()
+	meav = mec.getAvgPowerUsage()
+	mege = mec.getEnergyStorage()
+	
 	--Enrichment Factory 1
 
 	eef = ef.getEnergy()
@@ -170,6 +185,15 @@ while true do
 	monitor.write("---")
 	monitor.setCursorPos(45,9)
 	monitor.write("---")
+	
+	--ME System
+	
+	monitor.setCursorPos(45,12)
+	monitor.write(math.floor(meus))
+	monitor.setCursorPos(45,13)
+	monitor.write(math.floor(meav))
+	monitor.setCursorPos(45,14)
+	monitor.write(math.floor(mege))
 	
 	sleep(1)
 
