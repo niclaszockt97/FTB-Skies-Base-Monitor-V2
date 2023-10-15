@@ -1,5 +1,7 @@
 local modem = peripheral.wrap("down")
 local monitor = peripheral.wrap("left")
+local cb = peripheral.wrap("chatBox_0")
+local im = peripheral.wrap("inventoryManager_0")
 local es = peripheral.wrap("ultimateSmeltingFactory_0")
 local ef = peripheral.wrap("eliteEnrichingFactory_0")
 local mec = peripheral.wrap("meBridge_0")
