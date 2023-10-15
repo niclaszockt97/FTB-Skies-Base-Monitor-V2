@@ -5,8 +5,19 @@ local ef = peripheral.wrap("eliteEnrichingFactory_0")
 local mec = peripheral.wrap("meBridge_0")
 local ec = peripheral.wrap("eliteEnergyCube_0")
 local ei = peripheral.wrap("thermal:charge_bench_0")
+local wm = peripheral.wrap("top")
+
+
+--Variablen
+local ch = 5
+
 
 monitor.clear()
+
+--wireless Modem starten
+
+wm.open(ch)
+
 
 --Enrichment Factory Statisch
 
@@ -74,10 +85,6 @@ monitor.setCursorPos(30,14)
 monitor.write("Energie")
 
 while true do
-
-
-
-
 
 	--ME Controller
 
@@ -194,6 +201,13 @@ while true do
 	monitor.write(math.floor(meav))
 	monitor.setCursorPos(45,14)
 	monitor.write(math.floor(mege))
+	
+	--Energy Matrix
+	local event, modemSide, senderChannel, replyChannel, message, senderDistance = os.pullEvent("modem_message")
+
+	print(senderChannel,message)
+	
+	
 	
 	sleep(1)
 
